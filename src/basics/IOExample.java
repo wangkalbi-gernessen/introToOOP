@@ -12,7 +12,7 @@ public class IOExample {
         // "kr" - Korean
 
         // 1. create a scanner object
-        Scanner in = new Scanner(System.in);
+        Scanner in = new Scanner(System.in); // "in" is variable?
         while(true){
             System.out.print("Enter the language code ('q' to quit): ");
             String countryCode = in.nextLine();

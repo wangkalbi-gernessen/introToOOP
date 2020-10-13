@@ -26,6 +26,7 @@ public class StringsExample {
 
         // length (the number of characters);
         System.out.println(name.length()); // parenthesis is necessary after length
+        //  With reference to the number of arrays' elements, arrays.length should be used.
 
         // substring
         String cafe = "Starbucks"; // second cup, blenz tim hortons
