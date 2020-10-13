@@ -6,6 +6,7 @@ public class Rectangle {
     private int height;
     private String color = "Blue";
 
+    // constructor
     public Rectangle(int width, int height, String color){
         // call setter function
         setWidth(width);
