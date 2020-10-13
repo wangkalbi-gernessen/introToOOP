@@ -1,7 +1,7 @@
 package oop.encapsulation;
 
 public class Account {
-    private String username;
+    private String username = "agoos";
     private String password;
     private boolean paid;
 
