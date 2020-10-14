@@ -16,6 +16,7 @@ public class Driver {
         System.out.println("");
         obj3.printDetails();
         System.out.println("");
+        // Thanks to Danilo
         obj2.setHeight(5, 10);
 //        obj2.setWeight(345L);
         obj2.setCanTravel(true);

@@ -4,6 +4,7 @@ package lab1;
 /**
  * @author Kazunobu Someya
  */
+// Thanks to Danilo I came up with making this file
 public class ModelValidation {
     /**
      *
