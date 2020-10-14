@@ -8,8 +8,14 @@ public class Driver {
         Model obj1 = new Model();
         Model obj2 = new Model("Susan", "Smith", 70, 120, false, true);
         Model obj3 = new Model("Tiger", "Woods", 72,190);
-        obj1.printDetails();
+//        obj1.printDetails();
+        System.out.println("");
         obj2.printDetails();
+        System.out.println("");
         obj3.printDetails();
+        System.out.println("");
+        obj2.displayModelDetails();
+        System.out.println("");
+        obj3.displayModelDetails();
     }
 }

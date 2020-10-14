@@ -11,6 +11,9 @@ public class Model {
     private double weight;
     private boolean canTravel;
     private boolean smokes;
+    // Put new field to make string type of variable of a sequence of feet and inch
+    private String inchesToFeet;
+    private long weightKg;
 
     // constant variable
     public static final int INCHES_PER_FOOT = 12;
@@ -90,11 +93,18 @@ public class Model {
         if(inches >= 24 && inches <= 84){
             this.height = inches;
         }
+        int foot = inches / INCHES_PER_FOOT;
+        int inch = inches % INCHES_PER_FOOT;
+        setHeight(foot, inch);
     }
 
     // @param
     public void setHeight(int feet, int inches){
-
+        if(inches == 1){
+            this.inchesToFeet = feet + " feet " + inches + " inch";
+        }else{
+            this.inchesToFeet = feet + " feet " + inches + " inches";
+        }
     }
 
     // @return
@@ -111,11 +121,12 @@ public class Model {
         if(pounds >= 80 && pounds <= 280){
             this.weight = pounds;
         }
+        long kilograms = (long)(pounds / POUNDS_PER_KG);
     }
 
         // @param
     public void setWeight(long kilograms){
-
+        this.weightKg = kilograms;
     }
 
     // @return
@@ -148,15 +159,31 @@ public class Model {
      * @return the height in feet and inches
      */
     public String getHeightInFeetAndInches() {
-        return "";
+        return this.inchesToFeet;
     }
 
     // @return
-//    public long getWeightKg(){
-//        return "";
-//    }
+    public long getWeightKg(){
+        return this.weightKg;
+    }
 
+    public int calculatePayDollarsPerHour(){
+        // All models get these two dollars.
+        int amount = BASE_RATE_DOLLARS_PER_HOUR + TALL_THIN_BONUS_DOLLARS_PER_HOUR;
+        //
+        if(getCanTravel() == true){
+            amount += TRAVEL_BONUS_DOLLARS_PER_HOUR;
+        }else{
+            amount += 0;
+        }
 
+        if(getSmokes() == true){
+            amount -= SMOKER_DEDUCTION_DOLLARS_PER_HOUR;
+        }else{
+            amount -= 0;
+        }
+        return amount;
+    }
 
 
     /**
@@ -176,5 +203,22 @@ public class Model {
         }else{
             System.out.println("Does not smoke");
         }
+    }
+
+    public void displayModelDetails(){
+        System.out.println("Name: " + getFirstName() + " " + getLastName());
+        System.out.println("Height: " + getHeightInFeetAndInches());
+        System.out.println("Weight: " + Math.round(getWeight()) + " pounds");
+        if(getCanTravel() == true){
+            System.out.println("Travels: yep");
+        }else{
+            System.out.println("Travels: nope");
+        }
+        if(getSmokes() == true){
+            System.out.println("Smokes: yep");
+        }else{
+            System.out.println("Smokes: nope");
+        }
+        System.out.println("Hourly rate: " + "$" + calculatePayDollarsPerHour());
     }
 }
