@@ -1,4 +1,5 @@
 package lab1;
+import static lab1.ModelValidation.*;
 
 /**
  * @author Kazunobu Someya
@@ -11,9 +12,6 @@ public class Model {
     private double weight;
     private boolean canTravel;
     private boolean smokes;
-    // Put new field to make string type of variable of a sequence of feet and inch
-    private String inchesToFeet;
-    private long weightKg;
 
     // constant variable
     public static final int INCHES_PER_FOOT = 12;
@@ -34,6 +32,7 @@ public class Model {
     // @param
     // Make second constructor
     public Model(String firstName, String lastName, int heightInches, double weightPounds, boolean traveler, boolean smoker){
+
         setFirstName(firstName);
         setLastName(lastName);
         setHeight(heightInches);
@@ -62,9 +61,8 @@ public class Model {
     // @param
     // Set firstname
     public void setFirstName(String firstName){
-        if(firstName.length() >= 3 && firstName.length() <= 20){
-            this.firstName = firstName;
-        }
+        checkFirstName(firstName);
+        this.firstName = firstName;
     }
 
     // @return
@@ -76,9 +74,8 @@ public class Model {
     // @param
     // Set lastname
     public void setLastName(String lastName){
-        if(lastName.length() >= 3 && lastName.length() <= 20){
-            this.lastName = lastName;
-        }
+        checkLastName(lastName);
+        this.lastName = lastName;
     }
 
     // @return
@@ -90,22 +87,15 @@ public class Model {
     // @param
     // Set height in inches
     public void setHeight(int inches){
-        if(inches >= 24 && inches <= 84){
-            this.height = inches;
-        }
-        int foot = inches / INCHES_PER_FOOT;
-        int inch = inches % INCHES_PER_FOOT;
-        setHeight(foot, inch);
+        checkHeight(inches);
+        this.height = inches;
     }
 
     // @param
-    public void setHeight(int feet, int inches){
-        if(inches == 1){
-            this.inchesToFeet = feet + " feet " + inches + " inch";
-        }else{
-            this.inchesToFeet = feet + " feet " + inches + " inches";
-        }
-    }
+//    public void setHeight(int feet, int inches){
+//        checkHeight((feet * INCHES_PER_FOOT) + inches);
+//        this.height = feet * INCHES_PER_FOOT + inches;
+//    }
 
     // @return
     // Get the weight in pounds
@@ -118,16 +108,14 @@ public class Model {
      * @param pounds pounds (lb)
      */
     public void setWeight(double pounds) {
-        if(pounds >= 80 && pounds <= 280){
-            this.weight = pounds;
-        }
-        long kilograms = (long)(pounds / POUNDS_PER_KG);
+        checkWeight(pounds);
+        this.weight = pounds;
     }
 
         // @param
-    public void setWeight(long kilograms){
-        this.weightKg = kilograms;
-    }
+//    public void setWeight(long kilograms){
+//        this.weightKg = kilograms;
+//    }
 
     // @return
     // Get canTravel
@@ -158,32 +146,32 @@ public class Model {
      * Returns the height in feet and inches
      * @return the height in feet and inches
      */
-    public String getHeightInFeetAndInches() {
-        return this.inchesToFeet;
-    }
+//    public String getHeightInFeetAndInches() {
+//
+//    }
 
     // @return
-    public long getWeightKg(){
-        return this.weightKg;
-    }
+//    public long getWeightKg(){
+//        return this.weightKg;
+//    }
 
-    public int calculatePayDollarsPerHour(){
-        // All models get these two dollars.
-        int amount = BASE_RATE_DOLLARS_PER_HOUR + TALL_THIN_BONUS_DOLLARS_PER_HOUR;
-        //
-        if(getCanTravel() == true){
-            amount += TRAVEL_BONUS_DOLLARS_PER_HOUR;
-        }else{
-            amount += 0;
-        }
-
-        if(getSmokes() == true){
-            amount -= SMOKER_DEDUCTION_DOLLARS_PER_HOUR;
-        }else{
-            amount -= 0;
-        }
-        return amount;
-    }
+//    public int calculatePayDollarsPerHour(){
+//        // All models get these two dollars.
+//        int amount = BASE_RATE_DOLLARS_PER_HOUR + TALL_THIN_BONUS_DOLLARS_PER_HOUR;
+//        //
+//        if(getCanTravel() == true){
+//            amount += TRAVEL_BONUS_DOLLARS_PER_HOUR;
+//        }else{
+//            amount += 0;
+//        }
+//
+//        if(getSmokes() == true){
+//            amount -= SMOKER_DEDUCTION_DOLLARS_PER_HOUR;
+//        }else{
+//            amount -= 0;
+//        }
+//        return amount;
+//    }
 
 
     /**
@@ -205,20 +193,20 @@ public class Model {
         }
     }
 
-    public void displayModelDetails(){
-        System.out.println("Name: " + getFirstName() + " " + getLastName());
-        System.out.println("Height: " + getHeightInFeetAndInches());
-        System.out.println("Weight: " + Math.round(getWeight()) + " pounds");
-        if(getCanTravel() == true){
-            System.out.println("Travels: yep");
-        }else{
-            System.out.println("Travels: nope");
-        }
-        if(getSmokes() == true){
-            System.out.println("Smokes: yep");
-        }else{
-            System.out.println("Smokes: nope");
-        }
-        System.out.println("Hourly rate: " + "$" + calculatePayDollarsPerHour());
-    }
+//    public void displayModelDetails(){
+//        System.out.println("Name: " + getFirstName() + " " + getLastName());
+//        System.out.println("Height: " + getHeightInFeetAndInches());
+//        System.out.println("Weight: " + Math.round(getWeight()) + " pounds");
+//        if(getCanTravel() == true){
+//            System.out.println("Travels: yep");
+//        }else{
+//            System.out.println("Travels: nope");
+//        }
+//        if(getSmokes() == true){
+//            System.out.println("Smokes: yep");
+//        }else{
+//            System.out.println("Smokes: nope");
+//        }
+//        System.out.println("Hourly rate: " + "$" + calculatePayDollarsPerHour());
+//    }
 }
