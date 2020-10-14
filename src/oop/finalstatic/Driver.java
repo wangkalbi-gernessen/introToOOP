@@ -31,7 +31,7 @@ public class Driver {
 
             Time[] times = {t1, t2, t3, t4, t5};
             for (Time time : times) {
-                System.out.println(time.toUniversalForm());
+//                System.out.println(time.toUniversalForm());
                 System.out.println(time.toStandardForm());
             }
 

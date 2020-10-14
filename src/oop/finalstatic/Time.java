@@ -61,7 +61,7 @@ public class Time {
         this.second = second;
     }
 
-    public String toUniversalForm() {
+    public String toUniversalwForm() {
         // 21:45:20
         return String.format("%02d:%02d:%02d", hour, minute, second);
     }

@@ -23,16 +23,23 @@ public class Model {
     public static final int TRAVEL_BONUS_DOLLARS_PER_HOUR = 4;
     public static final int SMOKER_DEDUCTION_DOLLARS_PER_HOUR = 10;
 
-    // @param
-    // Make first constructor
+    /**
+     *
+     */
     public Model(){
 
     }
 
-    // @param
-    // Make second constructor
+    /**
+     *
+     * @param firstName
+     * @param lastName
+     * @param heightInches
+     * @param weightPounds
+     * @param traveler
+     * @param smoker
+     */
     public Model(String firstName, String lastName, int heightInches, double weightPounds, boolean traveler, boolean smoker){
-
         setFirstName(firstName);
         setLastName(lastName);
         setHeight(heightInches);
@@ -41,8 +48,13 @@ public class Model {
         setSmokes(smoker);
     }
 
-    // @param
-    // Make third constructor
+    /**
+     *
+     * @param firstName
+     * @param lastName
+     * @param heightInches
+     * @param weightPounds
+     */
     public Model(String firstName, String lastName, int heightInches, double weightPounds){
         setFirstName(firstName);
         setLastName(lastName);
@@ -52,53 +64,85 @@ public class Model {
         setSmokes(false);
     }
 
-    // @return
-    // Get firstname
+    /**
+     *
+     * @return
+     */
     public String getFirstName(){
         return this.firstName;
     }
 
-    // @param
-    // Set firstname
-    public void setFirstName(String firstName){
+    /**
+     *
+     * @param firstName
+     * @throws IllegalArgumentException
+     */
+    public void setFirstName(String firstName) throws IllegalArgumentException{
         checkFirstName(firstName);
         this.firstName = firstName;
     }
 
-    // @return
-    // Get lastname
+    /**
+     *
+     * @return
+     */
     public String getLastName(){
         return this.lastName;
     }
 
-    // @param
-    // Set lastname
-    public void setLastName(String lastName){
+    /**
+     *
+     * @param lastName
+     * @throws IllegalArgumentException
+     */
+    public void setLastName(String lastName) throws IllegalArgumentException{
         checkLastName(lastName);
         this.lastName = lastName;
     }
 
-    // @return
-    // Get height in inches
+    /**
+     *
+     * @return
+     */
     public int getHeight(){
         return this.height;
     }
 
-    // @param
-    // Set height in inches
-    public void setHeight(int inches){
+    /**
+     *
+     * @param inches
+     * @throws IllegalArgumentException
+     */
+    public void setHeight(int inches) throws IllegalArgumentException{
         checkHeight(inches);
         this.height = inches;
     }
 
-    // @param
-//    public void setHeight(int feet, int inches){
-//        checkHeight((feet * INCHES_PER_FOOT) + inches);
-//        this.height = feet * INCHES_PER_FOOT + inches;
-//    }
+    /**
+     *
+     * @param feet
+     * @param inches
+     * @throws IllegalArgumentException
+     */
+    public void setHeight(int feet, int inches) throws IllegalArgumentException{
+        checkHeight((feet * INCHES_PER_FOOT) + inches);
+        this.height = feet * INCHES_PER_FOOT + inches;
+    }
 
-    // @return
-    // Get the weight in pounds
+    /**
+     * Returns the height in feet and inches
+     * @return the height in feet and inches
+     */
+    public String getHeightInFeetAndInches() {
+        int feet = this.height / INCHES_PER_FOOT;
+        int inches = this.height % INCHES_PER_FOOT;
+        return String.format("%d feet %d inches", feet, inches);
+    }
+
+    /**
+     *
+     * @return
+     */
     public double getWeight(){
         return this.weight;
     }
@@ -107,72 +151,82 @@ public class Model {
      * Set the weight in pounds
      * @param pounds pounds (lb)
      */
-    public void setWeight(double pounds) {
+    public void setWeight(double pounds) throws IllegalArgumentException{
         checkWeight(pounds);
         this.weight = pounds;
     }
 
-        // @param
-//    public void setWeight(long kilograms){
-//        this.weightKg = kilograms;
-//    }
+    /**
+     *
+     * @param kilograms
+     * @throws IllegalArgumentException
+     */
+    public void setWeight(long kilograms) throws IllegalArgumentException{
+        double kilogramsToPounds = (double)kilograms * POUNDS_PER_KG;
+        checkWeight(kilogramsToPounds);
+        this.weight = kilogramsToPounds;
+    }
 
-    // @return
-    // Get canTravel
+    /**
+     *
+     * @return
+     */
+    public long getWeightKg(){
+        long poundsToKilograms = Math.round((long)this.weight / (long)POUNDS_PER_KG);
+        return poundsToKilograms;
+    }
+
+    /**
+     *
+     * @return
+     */
     public boolean getCanTravel(){
         return this.canTravel;
     }
 
-
-    // @param
-    // Set canTravel
+    /**
+     *
+     * @param traveler
+     */
     public void setCanTravel(boolean traveler){
         this.canTravel = traveler;
     }
 
-    // @return
-    // Get smokes
+    /**
+     *
+     * @return
+     */
     public boolean getSmokes(){
         return this.smokes;
     }
 
-    // @param
-    // Set smokes
+    /**
+     *
+     * @param smoker
+     */
     public void setSmokes(boolean smoker){
         this.smokes = smoker;
     }
 
     /**
-     * Returns the height in feet and inches
-     * @return the height in feet and inches
+     *
+     * @return
      */
-//    public String getHeightInFeetAndInches() {
-//
-//    }
-
-    // @return
-//    public long getWeightKg(){
-//        return this.weightKg;
-//    }
-
-//    public int calculatePayDollarsPerHour(){
-//        // All models get these two dollars.
-//        int amount = BASE_RATE_DOLLARS_PER_HOUR + TALL_THIN_BONUS_DOLLARS_PER_HOUR;
-//        //
-//        if(getCanTravel() == true){
-//            amount += TRAVEL_BONUS_DOLLARS_PER_HOUR;
-//        }else{
-//            amount += 0;
-//        }
-//
-//        if(getSmokes() == true){
-//            amount -= SMOKER_DEDUCTION_DOLLARS_PER_HOUR;
-//        }else{
-//            amount -= 0;
-//        }
-//        return amount;
-//    }
-
+    public int calculatePayDollarsPerHour(){
+        // All models get these two dollars.
+        int amount = BASE_RATE_DOLLARS_PER_HOUR;
+        if(getHeight() >= TALL_INCHES && getWeight() < THIN_POUNDS){
+            amount += TALL_THIN_BONUS_DOLLARS_PER_HOUR;
+        }
+        //
+        if(getCanTravel() == true){
+            amount += TRAVEL_BONUS_DOLLARS_PER_HOUR;
+        }
+        if(getSmokes() == true) {
+            amount -= SMOKER_DEDUCTION_DOLLARS_PER_HOUR;
+        }
+        return amount;
+    }
 
     /**
      * Prints detail information about this Model
@@ -193,20 +247,23 @@ public class Model {
         }
     }
 
-//    public void displayModelDetails(){
-//        System.out.println("Name: " + getFirstName() + " " + getLastName());
-//        System.out.println("Height: " + getHeightInFeetAndInches());
-//        System.out.println("Weight: " + Math.round(getWeight()) + " pounds");
-//        if(getCanTravel() == true){
-//            System.out.println("Travels: yep");
-//        }else{
-//            System.out.println("Travels: nope");
-//        }
-//        if(getSmokes() == true){
-//            System.out.println("Smokes: yep");
-//        }else{
-//            System.out.println("Smokes: nope");
-//        }
-//        System.out.println("Hourly rate: " + "$" + calculatePayDollarsPerHour());
-//    }
+    /**
+     * Prints detail information about this Model including hourly rate
+     */
+    public void displayModelDetails(){
+        System.out.println("Name: " + getFirstName() + " " + getLastName());
+        System.out.println("Height: " + getHeightInFeetAndInches());
+        System.out.println("Weight: " + getWeight() + " pounds");
+        if(getCanTravel() == true){
+            System.out.println("Travels: yep");
+        }else{
+            System.out.println("Travels: nope");
+        }
+        if(getSmokes() == true){
+            System.out.println("Smokes: yep");
+        }else{
+            System.out.println("Smokes: nope");
+        }
+        System.out.println("Hourly rate: " + "$" + calculatePayDollarsPerHour());
+    }
 }
