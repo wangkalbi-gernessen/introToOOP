@@ -1,6 +1,9 @@
 package week2.arrays;
 import java.util.Random;
 
+/**
+ * @author Kazunobu Someya
+ */
 public class BasicArrays2 {
     public static void main(String[] args) {
         int[] length = new int[10];
