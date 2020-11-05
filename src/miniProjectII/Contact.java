@@ -1,12 +1,28 @@
 package miniProjectII;
 
 public class Contact {
+    private int index;
     private String name;
     private String mobile;
+    private String work;
+    private String home;
+    private String city;
 
-    public Contact(String name, String mobile) {
+    public Contact(int index, String name, String mobile, String work, String home, String city) {
+        this.index = index;
         this.name = name;
         this.mobile = mobile;
+        this.work = work;
+        this.home = home;
+        this.city = city;
+    }
+
+    public int getIndex(){
+        return this.index;
+    }
+
+    public void setIndex(int index){
+        this.index = index;
     }
 
     public String getName(){
@@ -25,9 +41,33 @@ public class Contact {
         this.mobile = mobile;
     }
 
+    public String getWork(){
+        return this.work;
+    }
+
+    public void setWork(String work){
+        this.work = work;
+    }
+
+    public String getHome(){
+        return this.home;
+    }
+
+    public void setHome(String home){
+        this.home = home;
+    }
+
+    public String getCity(){
+        return this.city;
+    }
+
+    public void setCity(String city){
+        this.city = city;
+    }
+
     @Override
     public String toString(){
-        return "<" + getName() + "> (mobile=" + getMobile() + ")";
+        return getIndex() + ". <" + getName() + "> (mobile=" + getMobile() + ", work=" + getWork() + ", home=" + getHome() + ", city=" + getCity() + ")";
     }
 
     @Override

@@ -8,11 +8,6 @@ import java.util.regex.Pattern;
  */
 public class InputCollector {
 
-    public static void displayContactList(){
-//        ContactList r1 = new ContactList();
-//        System.out.println(r1.getNewContact());
-    }
-
     public static String getUserInput(String prompt){
         Scanner obj = new Scanner(System.in);
         System.out.println(prompt);
