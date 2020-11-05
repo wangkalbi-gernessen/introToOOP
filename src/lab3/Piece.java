@@ -10,6 +10,8 @@ public abstract class Piece {
     public Piece(int value, boolean isWhite){
         setValue(value);
         setWhite(isWhite);
+        // this.value = value
+        // this.isWhite = isWhite
     }
 
     public int getValue(){

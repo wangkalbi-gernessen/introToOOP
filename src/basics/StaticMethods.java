@@ -24,6 +24,15 @@ public class StaticMethods {
         System.out.println(arr == arr2); // false
         System.out.println(Arrays.equals(arr, arr1)); // true (contents)
 
+        int[] mar = new int[5];
+        for(int i = 0; i < mar.length; i++){
+            mar[i] = i;
+        }
+        System.out.println(Arrays.toString(mar));
+        int[] copy = Arrays.copyOf(mar, 3);
+        System.out.println(Arrays.toString(mar));
+//        int[] marz = mar.clone();
+//        System.out.println(Arrays.toString(marz));
     }
 
     public static void changeFirstElement(int[] array){
@@ -44,4 +53,6 @@ public class StaticMethods {
 
     // def add_two(a: int, b: int):
     //      return a + b
+
+
 }

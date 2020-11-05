@@ -20,7 +20,6 @@ public class Driver {
         int min = m.min(10, 20);
         System.out.println(min);
 
-
         try {
             Time t1 = new Time(17, 29, 9);
             Time t2 = new Time(15, 2, 19);
@@ -34,11 +33,8 @@ public class Driver {
 //                System.out.println(time.toUniversalForm());
                 System.out.println(time.toStandardForm());
             }
-
         } catch (IllegalArgumentException e) {
             System.err.println(e.getLocalizedMessage());
         }
-
-
     }
 }

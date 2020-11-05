@@ -36,6 +36,7 @@ public class ArraysExample {
         for(int i = 0; i < arr2.length; i++){
             arr2[i] = i + 1;
         }
+        System.out.println(arr2);
         System.out.println(Arrays.toString(arr2));
 
 //        int[] arr3 = new int[] {1, 2};
@@ -43,7 +44,5 @@ public class ArraysExample {
         for(String country: countries){
             System.out.println(country);
         }
-
-
     }
 }

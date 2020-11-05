@@ -16,9 +16,12 @@ public class Pawn extends Piece{
         this.newPiece = newPiece;
     }
 
-
     public void promote(Piece newPiece){
         Pawn b = new Pawn();
+//         if(!promoted) {
+//             this.newPiece = newPiece;
+//             this.promoted = true;
+//         }
     }
 
     // I referred following URL

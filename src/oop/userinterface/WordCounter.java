@@ -1,4 +1,4 @@
-package oop.userinteration;
+package oop.userinterface;
 
 import java.io.File;
 import java.io.FileNotFoundException;

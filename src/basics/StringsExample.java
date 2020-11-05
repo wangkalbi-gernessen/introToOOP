@@ -6,6 +6,8 @@ package basics;
 // - Data
 // - Code
 
+import java.util.Arrays;
+
 public class StringsExample {
     public static void main(String[] args) {
         // 1. string literal
@@ -40,7 +42,7 @@ public class StringsExample {
 //            System.out.println(i);
 //        }
         for(int i = 0; i <= brand.length() - 1; i++){
-            System.out.println(brand.substring(i, i+ 1));
+            System.out.print(brand.substring(i, i+ 1));
 //            System.out.println(brand.charAt(i));
         }
 
@@ -48,5 +50,9 @@ public class StringsExample {
         for(char ch : brand.toCharArray()){
             System.out.println(ch);
         }
+
+        int[] a = {1, 2, 3};
+        System.out.println(a);
+        System.out.println(Arrays.toString(a));
     }
 }
