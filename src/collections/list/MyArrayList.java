@@ -143,7 +143,6 @@ public class MyArrayList implements List, RandomAccess {
                 lastIndex++;
                 temp[lastIndex] = elem;
             }
-
             if ((len - size) == arr.length) {
                 return true;
             } else {
