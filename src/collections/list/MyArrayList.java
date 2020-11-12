@@ -135,15 +135,19 @@ public class MyArrayList implements List, RandomAccess {
             return false;
         }else{
             int lastIndex = elementData.length - 1;
-            Object[] temp = elementData.clone();
+            Object[] temp = new Object[elementData.length + c.size()];
+
             int len = temp.length; // length for array including added element
             Object[] arr = c.toArray();
+            for(int i = 0; i < elementData.length; i++) {
+                temp[i] = elementData[i];
+            }
+
             for (Object elem : arr) {
-                len++;
                 lastIndex++;
                 temp[lastIndex] = elem;
             }
-            if ((len - size) == arr.length) {
+            if ((len - elementData.length) == arr.length) {
                 return true;
             } else {
                 return false;
