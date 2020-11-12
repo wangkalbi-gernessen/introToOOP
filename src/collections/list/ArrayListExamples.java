@@ -2,6 +2,7 @@ package collections.list;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class ArrayListExamples {
@@ -88,5 +89,37 @@ public class ArrayListExamples {
         List<String> result = Arrays.asList(str);
         ArrayList<String> r = new ArrayList<>(result);
         System.out.println(r);
+        Collections.shuffle(r);
+        System.out.println(r);
+        Collections.reverse(r);
+        System.out.println(r);
+//        System.out.println(r.subList(1, 3));
+        Collections.swap(r, 1, 4);
+        System.out.println(r);
+
+        ArrayList<String> soy = (ArrayList<String>)r.clone();
+        System.out.println(soy);
+//        soy.removeAll(soy);
+        soy.clear();
+        System.out.println(soy);
+
+//        System.out.println(r.clone()); // not good
+        String optionNum = "3";
+        Integer toNum = Integer.parseInt(optionNum);
+        String toStr = toNum.toString();
+        System.out.println(toStr.equals(3));
+
+        ArrayList<Integer> numbers = new ArrayList<Integer>(6);
+        numbers.add(5);
+        numbers.add(3);
+        numbers.add(6);
+        numbers.trimToSize();
+        System.out.println(numbers);
+
+        Integer x = 10;
+        String toBinary = Integer.toBinaryString(x);
+        System.out.println(toBinary);
+        Integer toDecimal = Integer.parseInt(toBinary, 2);
+        System.out.println(toDecimal);
     }
 }

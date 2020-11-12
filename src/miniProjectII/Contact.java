@@ -78,7 +78,7 @@ public class Contact {
             return false;
         }else{
             Contact b = (Contact)o;
-            if((b.getName() == getName()) && (b.getMobile() == getMobile())){
+            if((b.getName() == getName()) && (b.getMobile() == getMobile()) && (b.getIndex() == getIndex() && (b.getWork() == getWork()) && (b.getHome() == getHome()) && (b.getCity() == getCity()))){
                 return true;
             }else{
                 return false;

@@ -8,14 +8,14 @@ import java.util.regex.Pattern;
  */
 public class Driver {
     public static void main(String[] args) {
-        Contact r1 = new Contact(0,"Benedikt", "090-999-2834", "footballer", "788-777-9999", "Hamburg");
-        Contact r2 = new Contact(1,"Juan", "678-172-6384", "Navy", "277-283-2993", "Quito");
-        Contact r3 = new Contact(2,"Kai", "178-472-6624", "Dancer", "470-263-2291", "Osaka");
+//        Contact r1 = new Contact(0,"Benedikt", "090-999-2834", "footballer", "788-777-9999", "Hamburg");
+//        Contact r2 = new Contact(1,"Juan", "678-172-6384", "Navy", "277-283-2993", "Quito");
+//        Contact r3 = new Contact(2,"Kai", "178-472-6624", "Dancer", "470-263-2291", "Osaka");
         ArrayList<Contact> contacts = new ArrayList<>();
         ContactList contactLists = new ContactList(contacts);
-        contactLists.addContact(r1);
-        contactLists.addContact(r2);
-        contactLists.addContact(r3);
+//        contactLists.addContact(r1);
+//        contactLists.addContact(r2);
+//        contactLists.addContact(r3);
 
         // https://stackoverflow.com/questions/33036087/how-would-i-use-a-while-loop-to-keep-requesting-user-input
         while(true){
@@ -29,10 +29,14 @@ public class Driver {
             System.out.println("+=======================+");
             String optionNum = InputCollector.getUserInput("Enter your option: ");
             if(optionNum.equals("1")){
-                for(int i = 0; i <= contacts.size() - 1; i++){
-                    System.out.println(contacts.get(i));
+                if(contacts.size() == 0) {
+                    System.out.println("no data");
+                }else{
+                    for(int i = 0; i <= contacts.size() - 1; i++){
+                        System.out.println(contacts.get(i));
+                    }
                 }
-                break;
+//                break;
             }else if(optionNum.equals("2")){
                 int index = contacts.size();
                 String username;
@@ -111,25 +115,19 @@ public class Driver {
                 for(Contact elem : contacts){
                     System.out.println(elem);
                 }
-                break;
-            }else if(optionNum == "3"){
+//                break;
+            }else if(optionNum.equals("3")){
                 while(true){
                     for(int i = 0; i <= contacts.size() - 1; i++){
                         System.out.println(contacts.get(i));
+                        System.out.println("Enter the index of contact to remove: ");
+                        String removedNum = InputCollector.getUserInput("Enter your option: ");
+                        if(Integer.parseInt(removedNum) == i) {
+                            contacts.remove(i);
+                        }
                     }
-                    System.out.println("Enter the index of contact to remove: ");
-                    String removedNum = InputCollector.getUserInput("Enter your option: ");
-                    if(removedNum == "0"){
-                        contacts.remove(0);
-                    }else if(removedNum == "1"){
-                        contacts.remove(1);
-                    }else{
-                        contacts.remove(2);
-                    }
-                    System.out.println(contacts);
-                    break;
                 }
-            }else if(optionNum == "4"){
+            }else if(optionNum.equals("4")){
 //                while(true){
 //                    for(int i = 0; i <= contacts.size() - 1; i++){
 //                        System.out.println(contacts.get(i));
@@ -146,7 +144,7 @@ public class Driver {
 //                    System.out.println(contacts);
 //                    break;
 //                }
-                break;
+//                break;
             // https://stackoverflow.com/questions/26499063/how-do-i-fix-my-java-code-so-that-it-ends-when-a-user-types-quit
             }else if(optionNum.equals("5")){
                 System.out.println("Bye!");
