@@ -45,7 +45,7 @@ public class MyArrayList implements List, RandomAccess {
     public boolean contains(Object o) {
         // TODO: Implement Me
         for(int i = 0; i <= elementData.length - 1; i++){
-            if(elementData[i] == o){
+            if(elementData[i].equals(o)){
                 return true;
             }
         }
@@ -90,9 +90,9 @@ public class MyArrayList implements List, RandomAccess {
         // TODO: Implement Me
         // find the index of Object o; (linear search)
         // shift all the elements after the index to left
-        for(int i = 0; i < size; i++){
+        for(int i = 0; i < elementData.length; i++){
             if(elementData[i].equals(o)){
-                if(i == size - 1){
+                if(i == elementData.length - 1){
                     elementData[i] = null;
                 }else{
 //                    elementData[i] = null;

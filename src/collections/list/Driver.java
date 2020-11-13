@@ -31,8 +31,8 @@ public class Driver {
         d.add("Japan");
         d.add("Singapore");
 
-
+        System.out.println(num1.remove("Germany"));
 //        System.out.println(num1.remove("England"));
-        System.out.println(num1.addAll(d));
+//        System.out.println(num1.addAll(d));
     }
 }
